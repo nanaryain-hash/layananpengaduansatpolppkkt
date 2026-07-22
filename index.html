@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Center - Satpol PP Kab. Kepulauan Tanimbar</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        satpol: {
+                            50: '#fdf8f4',
+                            100: '#f9eee5',
+                            200: '#f0d8c4', // Coklat sangat muda
+                            300: '#e5bda0',
+                            400: '#d59b75', // Coklat muda (Primary)
+                            500: '#c87f52',
+                            600: '#b86642',
+                            700: '#9a4f36',
+                            800: '#7f4231', // Coklat gelap (Teks/Aksen)
+                            900: '#67382a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and minor adjustments */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdf8f4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d59b75;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c87f52;
+        }
+        .hero-pattern {
+            background-color: #f9eee5;
+            background-image: radial-gradient(#d59b75 0.5px, transparent 0.5px), radial-gradient(#d59b75 0.5px, #f9eee5 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+    </style>
+</head>
+<body class="font-sans text-satpol-900 bg-satpol-50 antialiased selection:bg-satpol-300 selection:text-satpol-900">
+
+    <header class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-satpol-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logos and Title -->
+                <div class="flex items-center gap-3 md:gap-4">
+                    <div class="flex gap-2">
+                        <!-- Logo Kab. Kepulauan Tanimbar (Fallback image used if link breaks) -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Lambang_Kabupaten_Kepulauan_Tanimbar.png/250px-Lambang_Kabupaten_Kepulauan_Tanimbar.png" 
+                             alt="Logo Kepulauan Tanimbar" 
+                             class="h-10 w-10 md:h-12 md:w-12 object-contain drop-shadow-sm"
+                             onerror="this.src='https://placehold.co/100x100/d59b75/ffffff?text=KT'">
+                        
+                        <!-- Logo Satpol PP -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Lambang_Satpol_PP.png/250px-Lambang_Satpol_PP.png" 
+                             alt="Logo Satpol PP" 
+                             class="h-10 w-10 md:h-12 md:w-12 object-contain drop-shadow-sm"
+                             onerror="this.src='https://placehold.co/100x100/d59b75/ffffff?text=PP'">
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h1 class="text-sm md:text-lg font-bold leading-tight text-satpol-800">CALL CENTER SATPOL PP</h1>
+                        <p class="text-xs md:text-sm font-semibold text-satpol-600">KAB. KEPULAUAN TANIMBAR</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                    <a href="#beranda" class="text-satpol-700 hover:text-satpol-500 font-semibold transition-colors duration-200">Beranda</a>
+                    <a href="#layanan" class="text-satpol-700 hover:text-satpol-500 font-semibold transition-colors duration-200">Layanan</a>
+                    <a href="#lapor" class="text-satpol-700 hover:text-satpol-500 font-semibold transition-colors duration-200">Lapor Online</a>
+                    <a href="#kontak" class="text-satpol-700 hover:text-satpol-500 font-semibold transition-colors duration-200">Kontak</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-satpol-800 hover:text-satpol-600 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-satpol-100 border-b border-satpol-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#beranda" class="block px-3 py-2 rounded-md text-base font-medium text-satpol-800 hover:bg-satpol-200">Beranda</a>
+                <a href="#layanan" class="block px-3 py-2 rounded-md text-base font-medium text-satpol-800 hover:bg-satpol-200">Layanan</a>
+                <a href="#lapor" class="block px-3 py-2 rounded-md text-base font-medium text-satpol-800 hover:bg-satpol-200">Lapor Online</a>
+                <a href="#kontak" class="block px-3 py-2 rounded-md text-base font-medium text-satpol-800 hover:bg-satpol-200">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="beranda" class="hero-pattern relative py-16 md:py-24 lg:py-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <span class="inline-block py-1 px-3 rounded-full bg-satpol-200 text-satpol-800 text-sm font-bold tracking-wider mb-4 border border-satpol-300">LAYANAN CEPAT TANGGAP</span>
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-satpol-900 tracking-tight mb-6 drop-shadow-sm">
+                    Pusat Panggilan & Pengaduan<br class="hidden md:block" /> 
+                    <span class="text-satpol-600">Satpol PP Kepulauan Tanimbar</span>
+                </h2>
+                <p class="mt-4 max-w-2xl text-lg md:text-xl text-satpol-800 mx-auto mb-10 font-medium">
+                    Siaga menjaga ketertiban umum, ketenteraman masyarakat, dan penegakan Peraturan Daerah di wilayah Kabupaten Kepulauan Tanimbar.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="tel:112" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition hover:scale-105 duration-200 text-lg">
+                        <i class="fas fa-phone-alt animate-pulse"></i> Panggilan Darurat (112)
+                    </a>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition hover:scale-105 duration-200 text-lg">
+                        <i class="fab fa-whatsapp text-xl"></i> WhatsApp Pengaduan
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Decorative shapes -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-satpol-300 opacity-50 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-satpol-400 opacity-30 blur-3xl"></div>
+        </section>
+
+        <section id="layanan" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl md:text-3xl font-bold text-satpol-900 mb-3">Layanan Pengaduan & Penanganan</h3>
+                    <div class="w-24 h-1 bg-satpol-400 mx-auto rounded-full"></div>
+                    <p class="mt-4 text-satpol-600 max-w-2xl mx-auto">Kami melayani berbagai laporan masyarakat terkait gangguan ketertiban dan pelanggaran peraturan di wilayah hukum Kabupaten Kepulauan Tanimbar.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-satpol-50 rounded-2xl p-8 border border-satpol-200 shadow-sm hover:shadow-md transition-shadow duration-300 group">
+                        <div class="w-14 h-14 bg-satpol-200 rounded-xl flex items-center justify-center mb-6 group-hover:bg-satpol-400 transition-colors duration-300">
+                            <i class="fas fa-shield-alt text-2xl text-satpol-800 group-hover:text-white transition-colors duration-300"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-satpol-900 mb-3">Ketertiban Umum</h4>
+                        <p class="text-satpol-700 leading-relaxed">Penanganan gangguan keamanan lingkungan, keributan, hingga penertiban anak jalanan dan gelandangan demi kenyamanan bersama.</p>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="bg-satpol-50 rounded-2xl p-8 border border-satpol-200 shadow-sm hover:shadow-md transition-shadow duration-300 group">
+                        <div class="w-14 h-14 bg-satpol-200 rounded-xl flex items-center justify-center mb-6 group-hover:bg-satpol-400 transition-colors duration-300">
+                            <i class="fas fa-gavel text-2xl text-satpol-800 group-hover:text-white transition-colors duration-300"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-satpol-900 mb-3">Pelanggaran Perda</h4>
+                        <p class="text-satpol-700 leading-relaxed">Penertiban bangunan liar, perizinan usaha, reklame ilegal, serta penegakan berbagai Peraturan Daerah (Perda) dan Peraturan Bupati.</p>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="bg-satpol-50 rounded-2xl p-8 border border-satpol-200 shadow-sm hover:shadow-md transition-shadow duration-300 group">
+                        <div class="w-14 h-14 bg-satpol-200 rounded-xl flex items-center justify-center mb-6 group-hover:bg-satpol-400 transition-colors duration-300">
+                            <i class="fas fa-bullhorn text-2xl text-satpol-800 group-hover:text-white transition-colors duration-300"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-satpol-900 mb-3">Pengaduan Masyarakat</h4>
+                        <p class="text-satpol-700 leading-relaxed">Menerima laporan langsung dari masyarakat terkait masalah ketenteraman lingkungan dengan respon cepat 24/7.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lapor" class="py-16 bg-satpol-100">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row border border-satpol-200">
+                    <!-- Form Info Side -->
+                    <div class="bg-satpol-800 p-8 lg:p-12 text-white lg:w-2/5 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-4">Lapor Online</h3>
+                            <p class="text-satpol-200 mb-8 leading-relaxed text-sm md:text-base">
+                                Sampaikan laporan atau pengaduan Anda melalui form ini. Pastikan data yang dimasukkan valid agar petugas kami dapat segera menindaklanjuti ke lokasi kejadian.
+                            </p>
+                            
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 text-sm">
+                                    <i class="fas fa-check-circle mt-1 text-satpol-300"></i>
+                                    <span>Identitas pelapor akan dirahasiakan.</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm">
+                                    <i class="fas fa-check-circle mt-1 text-satpol-300"></i>
+                                    <span>Gunakan bahasa yang sopan dan jelas.</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm">
+                                    <i class="fas fa-check-circle mt-1 text-satpol-300"></i>
+                                    <span>Sertakan alamat/lokasi kejadian secara spesifik.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-10 lg:mt-0 pt-8 border-t border-satpol-600">
+                            <p class="text-sm text-satpol-300 font-medium">Jam Operasional Layanan:</p>
+                            <p class="font-bold text-lg">24 Jam / 7 Hari</p>
+                        </div>
+                    </div>
+
+                    <!-- Form Input Side -->
+                    <div class="p-8 lg:p-12 lg:w-3/5 bg-white">
+                        <form id="pengaduan-form" onsubmit="handleFormSubmit(event)">
+                            <div class="space-y-5">
+                                <div>
+                                    <label for="nama" class="block text-sm font-semibold text-satpol-800 mb-1">Nama Lengkap *</label>
+                                    <input type="text" id="nama" required class="w-full px-4 py-3 rounded-lg bg-satpol-50 border border-satpol-200 focus:outline-none focus:ring-2 focus:ring-satpol-400 focus:border-transparent transition-all">
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div>
+                                        <label for="nohp" class="block text-sm font-semibold text-satpol-800 mb-1">Nomor HP / WhatsApp *</label>
+                                        <input type="tel" id="nohp" required class="w-full px-4 py-3 rounded-lg bg-satpol-50 border border-satpol-200 focus:outline-none focus:ring-2 focus:ring-satpol-400 focus:border-transparent transition-all">
+                                    </div>
+                                    <div>
+                                        <label for="kategori" class="block text-sm font-semibold text-satpol-800 mb-1">Kategori Laporan *</label>
+                                        <select id="kategori" required class="w-full px-4 py-3 rounded-lg bg-satpol-50 border border-satpol-200 focus:outline-none focus:ring-2 focus:ring-satpol-400 focus:border-transparent transition-all">
+                                            <option value="" disabled selected>Pilih Kategori...</option>
+                                            <option value="ketertiban">Gangguan Ketertiban</option>
+                                            <option value="perda">Pelanggaran Perda</option>
+                                            <option value="lainnya">Lainnya</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="lokasi" class="block text-sm font-semibold text-satpol-800 mb-1">Lokasi Kejadian (Kecamatan/Desa/Jalan) *</label>
+                                    <input type="text" id="lokasi" required class="w-full px-4 py-3 rounded-lg bg-satpol-50 border border-satpol-200 focus:outline-none focus:ring-2 focus:ring-satpol-400 focus:border-transparent transition-all">
+                                </div>
+
+                                <div>
+                                    <label for="laporan" class="block text-sm font-semibold text-satpol-800 mb-1">Detail Laporan *</label>
+                                    <textarea id="laporan" rows="4" required class="w-full px-4 py-3 rounded-lg bg-satpol-50 border border-satpol-200 focus:outline-none focus:ring-2 focus:ring-satpol-400 focus:border-transparent transition-all resize-none"></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full bg-satpol-600 hover:bg-satpol-800 text-white font-bold py-4 px-6 rounded-lg shadow-md transition-colors duration-300 flex justify-center items-center gap-2">
+                                    <i class="fas fa-paper-plane"></i> Kirim Laporan Sekarang
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold text-satpol-900 mb-6">Hubungi Kami</h3>
+                        <p class="text-satpol-600 mb-8 leading-relaxed">
+                            Satuan Polisi Pamong Praja Kabupaten Kepulauan Tanimbar selalu siap melayani masyarakat. Kunjungi markas kami atau hubungi melalui saluran resmi di bawah ini.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-satpol-100 rounded-full flex items-center justify-center shrink-0">
+                                    <i class="fas fa-map-marker-alt text-xl text-satpol-600"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-satpol-900 text-lg">Markas Komando (Mako)</h5>
+                                    <p class="text-satpol-600 mt-1">Jl. Ir. Soekarno, Saumlaki, Kec. Tanimbar Selatan,<br>Kab. Kepulauan Tanimbar, Maluku</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-satpol-100 rounded-full flex items-center justify-center shrink-0">
+                                    <i class="fas fa-phone-alt text-xl text-satpol-600"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-satpol-900 text-lg">Telepon / Call Center</h5>
+                                    <p class="text-satpol-600 mt-1">(0918) 123456 / 112 (Darurat)</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-satpol-100 rounded-full flex items-center justify-center shrink-0">
+                                    <i class="fas fa-envelope text-xl text-satpol-600"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-satpol-900 text-lg">Email Resmi</h5>
+                                    <p class="text-satpol-600 mt-1">pengaduan@satpolpp.tanimbarkab.go.id</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Dummy Map Illustration (using a colored div and icon as placeholder for an actual iframe map to keep it clean) -->
+                    <div class="bg-satpol-200 rounded-2xl h-80 md:h-96 w-full flex flex-col items-center justify-center border-4 border-satpol-100 shadow-inner relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Map_of_Indonesia_%28locator%29.svg')] bg-center bg-cover opacity-10"></div>
+                        <i class="fas fa-map-marked-alt text-6xl text-satpol-500 mb-4 z-10 group-hover:scale-110 transition-transform duration-300"></i>
+                        <p class="text-satpol-800 font-semibold z-10">Peta Lokasi Mako Satpol PP Saumlaki</p>
+                        <a href="#" class="mt-4 bg-satpol-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-satpol-800 transition z-10">Buka di Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-satpol-900 text-satpol-200 pt-16 pb-8 border-t-4 border-satpol-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Branding -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Lambang_Kabupaten_Kepulauan_Tanimbar.png/250px-Lambang_Kabupaten_Kepulauan_Tanimbar.png" 
+                             alt="Logo" class="h-10 w-10 brightness-0 invert opacity-90"
+                             onerror="this.src='https://placehold.co/100x100/ffffff/000000?text=KT'">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Lambang_Satpol_PP.png/250px-Lambang_Satpol_PP.png" 
+                             alt="Logo PP" class="h-10 w-10 brightness-0 invert opacity-90"
+                             onerror="this.src='https://placehold.co/100x100/ffffff/000000?text=PP'">
+                    </div>
+                    <h4 class="text-white text-lg font-bold mb-2">Satpol PP Kepulauan Tanimbar</h4>
+                    <p class="text-satpol-300 text-sm leading-relaxed">
+                        Prajurit Wibawa Bawa Raharja.<br>Melayani dan melindungi masyarakat Kepulauan Tanimbar dengan integritas dan profesionalisme.
+                    </p>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-6">Tautan Cepat</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#beranda" class="hover:text-white transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-satpol-500"></i> Beranda</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-satpol-500"></i> Layanan Kami</a></li>
+                        <li><a href="#lapor" class="hover:text-white transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-satpol-500"></i> Lapor Online</a></li>
+                        <li><a href="https://tanimbarkab.go.id" target="_blank" class="hover:text-white transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-satpol-500"></i> Portal Pemkab Tanimbar</a></li>
+                    </ul>
+                </div>
+
+                <!-- Socials -->
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-6">Media Sosial</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-satpol-800 flex items-center justify-center hover:bg-satpol-500 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-satpol-800 flex items-center justify-center hover:bg-satpol-500 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-satpol-800 flex items-center justify-center hover:bg-satpol-500 hover:text-white transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-satpol-800 text-center text-sm text-satpol-400">
+                <p>&copy; 2026 Satuan Polisi Pamong Praja Kabupaten Kepulauan Tanimbar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-40 animate-bounce">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Success Modal Structure -->
+    <div id="success-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm px-4 transition-opacity">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 text-center transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-check text-4xl text-green-500"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-satpol-900 mb-2">Laporan Terkirim!</h3>
+            <p class="text-satpol-600 mb-8">Terima kasih, laporan Anda telah kami terima dan akan segera diproses oleh petugas jaga Satpol PP Kab. Kepulauan Tanimbar.</p>
+            <button onclick="closeModal()" class="w-full bg-satpol-600 hover:bg-satpol-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Form handling logic to avoid default alert() and use custom modal
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent page reload
+            
+            // Get modal elements
+            const modal = document.getElementById('success-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            // Show modal
+            modal.classList.remove('hidden');
+            
+            // Small delay to trigger animation
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            
+            // Reset the form
+            document.getElementById('pengaduan-form').reset();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('success-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            // Animate out
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            // Hide after animation finishes
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
